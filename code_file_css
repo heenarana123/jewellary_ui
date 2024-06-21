@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.sidebar-header h1 {
+    margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sidebar nav ul li a.active, .sidebar nav ul li a:hover {
+    background-color: #edc531;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+header button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #edc531;
+    color: #fff;
+    cursor: pointer;
+}
+
+header button:hover {
+    background-color: #d4ab2a;
+}
+
+.statistics, .listings, .activity {
+    margin-bottom: 20px;
+}
+
+.stats-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.stats-card img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.stats-info p {
+    margin-bottom: 10px;
+}
+
+.stats-info p button {
+    margin-left: 10px;
+    padding: 2px 5px;
+    background-color: #d4ab2a;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product {
+    width: 30%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.product-info {
+    color: #333;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+#activity-panel {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#activity-panel.active {
+    right: 0;
+}
+
+#open-activity {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #edc531;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#open-activity:hover {
+    background-color: #d4ab2a;
+}
+
+#close-activity {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #edc531;
+    color: #fff;
+    cursor: pointer;
+}
+
+#close-activity:hover
+
+
+
+
+
+js________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle activity panel
+    document.getElementById('open-activity').addEventListener('click', function() {
+        const panel = document.getElementById('activity-panel');
+        panel.classList.toggle('active');
+    });
+
+    // Close activity panel
+    document.getElementById('close-activity').addEventListener('click', function() {
+        const panel = document.getElementById('activity-panel');
+        panel.classList.remove('active');
+    });
+
+    // Create radio buttons dynamically
+    function createRadioButtons(containerId, options) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Clear previous content
+
+        options.forEach(option => {
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'metalType';
+            radio.value = option.toLowerCase();
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(option));
+            
+            // Add a line break between radio buttons
+            label.appendChild(document.createElement('br'));
+            
+            container.appendChild(label);
+        });
+    }
+
+    // Handle click on GOLD button
+    document.getElementById('gold-btn').addEventListener('click', function() {
+        createRadioButtons('metal-options', ['Ring', 'Bangles', 'Bracelet']);
+    });
+
+    // Handle click on SILVER button
+    document.getElementById('silver-btn').addEventListener('click', function() {
+        createRadioButtons('metal-options', ['Ring', 'Earring', 'Neckband', 'Choker']);
+    });
+});
